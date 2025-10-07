@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'bidenwhitehouse.archives.gov'
+      },
+      {
+        protocol:'https',
+        hostname: 'raw.githubusercontent.com'
       }
     ]
   }

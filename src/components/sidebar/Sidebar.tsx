@@ -30,7 +30,7 @@ const Sidebar = () => {
     <div
       id="menu"
       style={{width:'400px'}}
-      className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen"
+      className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen sticky top-0"
     >
       <div id="logo" className="my-4 px-6">
         <div className="flex items-center gap-2 justify-start">
