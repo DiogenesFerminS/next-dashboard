@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { RiNextjsLine } from "react-icons/ri";
 import { SidebarIcon } from "../interfaces/sidebarIcons.interface";
-import { IoBrowsersOutline, IoCalculator, IoFootball } from "react-icons/io5";
+import { IoBrowsersOutline, IoCalculator, IoFootball, IoHeartOutline } from "react-icons/io5";
 import SideBarMenuItem from "./SideBarMenuItem";
 
 const MenuItems: SidebarIcon[] = [
@@ -22,6 +22,12 @@ const MenuItems: SidebarIcon[] = [
       description: 'Generacion estatica',
       icon: <IoFootball size={30}/>,
       path: '/dashboard/pokemons'
+    },
+    {
+      title: 'Favorite',
+      description: 'Favorites Pokemons',
+      icon: <IoHeartOutline size={30}/>,
+      path: '/dashboard/favorite'
     }
 ]
 
