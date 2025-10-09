@@ -1,7 +1,10 @@
+'use client';
 import Link from "next/link";
 import { SimplePokemons } from "../interfaces";
 import Image from "next/image";
-import { IoHeartOutline } from "react-icons/io5";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { toggleFavorite } from "@/store/pokemons/pokemons";
 
 interface Props {
   pokemon: SimplePokemons
@@ -9,6 +12,13 @@ interface Props {
 
 const PokemonCard = ({ pokemon } : Props) => {
   const {id, name} = pokemon;
+  const isFavorite = useAppSelector((state) => !!state.pokemons.favorite[id])
+  const dispatch = useAppDispatch();
+
+  const handleToggleFavorite = () => {
+    dispatch( toggleFavorite(pokemon) )
+  }
+
   return (
     <div className="mx-auto right-0 mt-2 w-60">
       <div className="bg-white rounded overflow-hidden shadow-lg">
@@ -31,20 +41,25 @@ const PokemonCard = ({ pokemon } : Props) => {
           </div>
         </div>
         <div className="border-b">
-          <Link
-            href="/dashboard/main"
-            className="px-4 py-2 hover:bg-gray-200 flex items-center gap-2 justify-center"
+          <div
+            onClick={handleToggleFavorite}
+            className="px-4 py-2 hover:bg-gray-200 flex items-center gap-2 justify-center cursor-pointer"
           >
             <div className="text-red-600">
-              <IoHeartOutline size={20}/>
+              {
+                isFavorite 
+                ? (<IoHeart size={20}/>)
+                : (<IoHeartOutline size={20}/>)
+              }
             </div>
             <div className="pl-3">
-              <p className="text-sm font-medium text-gray-800 leading-none">
-                Añadir a Favoritos
-              </p>
-              <p className="text-xs text-gray-500">Este pokemon no esta en favoritos</p>
+              {
+                isFavorite
+                ?(<p className="text-sm font-medium text-gray-800 leading-none">Favorito</p>)
+                : (<p className="text-sm font-medium text-gray-800 leading-none">Añadir a Favoritos</p>)
+              }
             </div>
-          </Link>
+          </div>
          
         </div>
       </div>
